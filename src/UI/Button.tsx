@@ -1,9 +1,9 @@
 import React from "react";
 
-const Button = ({ handleClick, name }: { handleClick: any; name: string }) => {
+const Button = ({ name, handleClick }: { name: string; handleClick: any }) => {
   return (
     <button
-      className=" px-2 py-1 text-xs border cursor-pointer hover:bg-gray-100 hover:shadow-md hover:scale-105"
+      className="border play2 text-sm px-3 border-black hover:scale-105 hover:shadow-[1px_1px_1px_black] transition-all duration-300 ease-in"
       onClick={handleClick}
     >
       {name}
