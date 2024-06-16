@@ -6,6 +6,7 @@ import FlatComponent from "@/components/Querying/FlatComponent";
 import IncludeComponent from "@/components/Querying/IncludeCompo";
 import IndexOfComponent from "@/components/Querying/IndexOfComponent";
 import MapComponent from "@/components/Querying/MapComponent";
+import ReduceComponent from "@/components/Querying/ReduceComp";
 import React, { useState } from "react";
 
 const Page = () => {
@@ -74,6 +75,9 @@ const Page = () => {
     { label: 9, isMapped: false },
     { label: 10, isMapped: false },
   ]);
+
+  const [ReduceArr, setReduceArr] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+  console.log("ReduceArr::: ", ReduceArr);
 
   // ---handle filter------//
   const handleFilter = () => {
@@ -162,6 +166,19 @@ const Page = () => {
     }
   };
 
+  // --- handleReduce --- //
+  const handleReduce = () => {
+    setQueryMethod("reduce");
+    if (QueryMethod === "reduce" && ReduceArr.length > 1) {
+      const newArr: any = ReduceArr.reduce((acc: any, ini: any) => {
+        return acc + ini;
+      }, 0);
+      setReduceArr(newArr);
+    } else if (QueryMethod === "reduce" && ReduceArr.length === 0) {
+      setReduceArr([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+    }
+  };
+
   return (
     <div className="h-full overflow-y-auto">
       <div className=" flex flex-wrap py-2 gap-1 justify-center px-5">
@@ -171,6 +188,7 @@ const Page = () => {
         <Button name="Includes" handleClick={handleInclude} />
         <Button name="IndexOf" handleClick={handleIndexOf} />
         <Button name="Map" handleClick={handleMap} />
+        <Button name="Reduce" handleClick={handleReduce} />
       </div>
 
       {/* --methods-- */}
@@ -189,6 +207,7 @@ const Page = () => {
 
       {QueryMethod === "indexOf" && <IndexOfComponent Arr={IndexArr} />}
       {QueryMethod === "map" && <MapComponent Arr={mapArray} />}
+      {QueryMethod === "reduce" && <ReduceComponent Arr={ReduceArr} />}
     </div>
   );
 };

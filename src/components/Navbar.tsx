@@ -28,7 +28,7 @@ const Navbar = () => {
     }
   }, [MobileMenuToggle]);
   return (
-    <div className="fixed inset-x-0 bg-black playwrite text-white h-[50px] flex justify-between items-center font-semibold px-3">
+    <div className="fixed inset-x-0 bg-black playwrite text-white h-[50px] flex justify-between items-center font-semibold px-3 md:justify-center">
       <p>Array Visulizer</p>
       <TbMenu
         className=" text-white md:hidden"
@@ -38,7 +38,7 @@ const Navbar = () => {
       {/* mobile menu: */}
       <div
         className={`${
-          MobileMenuToggle && "hidden"
+          !MobileMenuToggle && "hidden"
         } fixed inset-0 bg-black/60  md:hidden`}
       >
         <div className={`w-[65%] bg-white relative h-full`}>
