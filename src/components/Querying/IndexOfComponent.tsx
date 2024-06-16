@@ -1,4 +1,3 @@
-import Input from "@/UI/Input";
 import React, { useState } from "react";
 
 const IndexOfComponent = ({ Arr }: { Arr: any }) => {
@@ -8,7 +7,8 @@ const IndexOfComponent = ({ Arr }: { Arr: any }) => {
       <h1 className="text-center font-semibold">IndexOF Method</h1>
 
       <p className=" text-sm text-center my-5">
-        Clicks on one of the square below to find out index of it.
+        Clicks on one of the square below to find out index of it. (lastIndexOf
+        works similar but in reverse order)
       </p>
       <div className="flex flex-wrap justify-center">
         {Arr.length > 0 &&

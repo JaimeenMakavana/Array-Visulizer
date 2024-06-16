@@ -5,6 +5,7 @@ import FindComponent from "@/components/Querying/FindComponent";
 import FlatComponent from "@/components/Querying/FlatComponent";
 import IncludeComponent from "@/components/Querying/IncludeCompo";
 import IndexOfComponent from "@/components/Querying/IndexOfComponent";
+import MapComponent from "@/components/Querying/MapComponent";
 import React, { useState } from "react";
 
 const Page = () => {
@@ -60,6 +61,19 @@ const Page = () => {
   const [includeInput, setIncludeInput] = useState("");
 
   const [IndexArr, setIndexArr] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+
+  const [mapArray, setMapArray] = useState([
+    { label: 1, isMapped: false },
+    { label: 2, isMapped: false },
+    { label: 3, isMapped: false },
+    { label: 4, isMapped: false },
+    { label: 5, isMapped: false },
+    { label: 6, isMapped: false },
+    { label: 7, isMapped: false },
+    { label: 8, isMapped: false },
+    { label: 9, isMapped: false },
+    { label: 10, isMapped: false },
+  ]);
 
   // ---handle filter------//
   const handleFilter = () => {
@@ -136,6 +150,18 @@ const Page = () => {
     setQueryMethod("indexOf");
   };
 
+  //  --- handleMap --- //
+  const handleMap = () => {
+    setQueryMethod("map");
+
+    if (QueryMethod === "map") {
+      const newArr = mapArray.map((ele) => {
+        return { ...ele, isMapped: true };
+      });
+      setMapArray(newArr);
+    }
+  };
+
   return (
     <div className="h-full overflow-y-auto">
       <div className=" flex flex-wrap py-2 gap-1 justify-center px-5">
@@ -144,6 +170,7 @@ const Page = () => {
         <Button name="Flat" handleClick={handleFlat} />
         <Button name="Includes" handleClick={handleInclude} />
         <Button name="IndexOf" handleClick={handleIndexOf} />
+        <Button name="Map" handleClick={handleMap} />
       </div>
 
       {/* --methods-- */}
@@ -161,6 +188,7 @@ const Page = () => {
       )}
 
       {QueryMethod === "indexOf" && <IndexOfComponent Arr={IndexArr} />}
+      {QueryMethod === "map" && <MapComponent Arr={mapArray} />}
     </div>
   );
 };
