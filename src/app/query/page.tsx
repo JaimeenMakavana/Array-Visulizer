@@ -7,6 +7,7 @@ import IncludeComponent from "@/components/Querying/IncludeCompo";
 import IndexOfComponent from "@/components/Querying/IndexOfComponent";
 import MapComponent from "@/components/Querying/MapComponent";
 import ReduceComponent from "@/components/Querying/ReduceComp";
+import ReverseComponent from "@/components/Querying/ReverseComponent";
 import React, { useState } from "react";
 
 const Page = () => {
@@ -77,8 +78,19 @@ const Page = () => {
   ]);
 
   const [ReduceArr, setReduceArr] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
-  console.log("ReduceArr::: ", ReduceArr);
-
+  const [ReverseArr, setReverseArr] = useState([
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+  ]);
+  console.log("ReverseArr::: ", ReverseArr);
   // ---handle filter------//
   const handleFilter = () => {
     setQueryMethod("filter");
@@ -179,6 +191,17 @@ const Page = () => {
     }
   };
 
+  //  --- handleReverse --- //
+  const handleReverse = () => {
+    setQueryMethod("reverse");
+
+    if (QueryMethod === "reverse") {
+      const newArr = [...ReverseArr];
+      newArr.reverse();
+      setReverseArr(newArr);
+    }
+  };
+
   return (
     <div className="h-full overflow-y-auto">
       <div className=" flex flex-wrap py-2 gap-1 justify-center px-5">
@@ -189,6 +212,7 @@ const Page = () => {
         <Button name="IndexOf" handleClick={handleIndexOf} />
         <Button name="Map" handleClick={handleMap} />
         <Button name="Reduce" handleClick={handleReduce} />
+        <Button name="Reverse" handleClick={handleReverse} />
       </div>
 
       {/* --methods-- */}
@@ -208,6 +232,7 @@ const Page = () => {
       {QueryMethod === "indexOf" && <IndexOfComponent Arr={IndexArr} />}
       {QueryMethod === "map" && <MapComponent Arr={mapArray} />}
       {QueryMethod === "reduce" && <ReduceComponent Arr={ReduceArr} />}
+      {QueryMethod === "reverse" && <ReverseComponent Arr={ReverseArr} />}
     </div>
   );
 };
