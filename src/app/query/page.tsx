@@ -8,6 +8,9 @@ import IndexOfComponent from "@/components/Querying/IndexOfComponent";
 import MapComponent from "@/components/Querying/MapComponent";
 import ReduceComponent from "@/components/Querying/ReduceComp";
 import ReverseComponent from "@/components/Querying/ReverseComponent";
+import SliceComponent from "@/components/Querying/SliceCompo";
+import SpliceComponent from "@/components/Querying/SpliceCompo";
+import SpliceCompo from "@/components/Querying/SpliceCompo";
 import React, { useState } from "react";
 
 const Page = () => {
@@ -90,7 +93,18 @@ const Page = () => {
     "9",
     "10",
   ]);
-  console.log("ReverseArr::: ", ReverseArr);
+
+  const [SliceArr, setSliceArr] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+  const [SelectedSlice, setSelectedSlice] = useState([]);
+
+  const [SpliceArr, setSpliceArr] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+  const [SpliceInput, setSpliceInput] = useState("");
+
+  console.log(
+    ' SpliceInput.split(",")::: ',
+    SpliceInput.split(",")[2].slice(1, -1).split(",")
+  );
+
   // ---handle filter------//
   const handleFilter = () => {
     setQueryMethod("filter");
@@ -202,6 +216,44 @@ const Page = () => {
     }
   };
 
+  // --- handleSlice --- //
+  const handleSlice = () => {
+    setQueryMethod("slice");
+    if (SelectedSlice.length > 0) {
+      setSliceArr((prevArr: any) => {
+        return prevArr.filter((ele: never) => !SelectedSlice.includes(ele));
+      });
+    } else {
+      setSliceArr([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+    }
+  };
+
+  // --- handleSplice --- //
+  const handleSplice = () => {
+    setQueryMethod("splice");
+
+    if (SpliceInput) {
+      const inputArray = SpliceInput.split(",");
+      const start = parseInt(inputArray[0], 10);
+      const deleteCount = parseInt(inputArray[1], 10);
+      const items = inputArray.slice(2).join(",").slice(1, -1).split(",");
+
+      const newArr = [...SpliceArr];
+
+      if (items.length > 0) {
+        newArr.splice(
+          start,
+          deleteCount,
+          ...items.map((item) => parseInt(item, 10))
+        );
+      } else {
+        newArr.splice(start, deleteCount);
+      }
+
+      setSpliceArr(newArr);
+    }
+  };
+
   return (
     <div className="h-full overflow-y-auto">
       <div className=" flex flex-wrap py-2 gap-1 justify-center px-5">
@@ -213,6 +265,9 @@ const Page = () => {
         <Button name="Map" handleClick={handleMap} />
         <Button name="Reduce" handleClick={handleReduce} />
         <Button name="Reverse" handleClick={handleReverse} />
+        {/* <Button name="Some" handleClick={handleReverse} /> */}
+        <Button name="Slice" handleClick={handleSlice} />
+        <Button name="Splice" handleClick={handleSplice} />
       </div>
 
       {/* --methods-- */}
@@ -233,6 +288,18 @@ const Page = () => {
       {QueryMethod === "map" && <MapComponent Arr={mapArray} />}
       {QueryMethod === "reduce" && <ReduceComponent Arr={ReduceArr} />}
       {QueryMethod === "reverse" && <ReverseComponent Arr={ReverseArr} />}
+
+      {QueryMethod === "splice" && (
+        <SpliceComponent Arr={SpliceArr} handleChange={setSpliceInput} />
+      )}
+
+      {QueryMethod === "slice" && (
+        <SliceComponent
+          SelectedSlice={SelectedSlice}
+          setSelectedSlice={setSelectedSlice}
+          Arr={SliceArr}
+        />
+      )}
     </div>
   );
 };

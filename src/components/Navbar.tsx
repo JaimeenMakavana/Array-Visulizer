@@ -50,9 +50,9 @@ const Navbar = () => {
           </button>
           <ol className=" text-[12px]">
             <List name="Inserting" URL="/" />
-            <List name="Deleting" URL="/delete" />
+            {/* <List name="Deleting" URL="/delete" /> */}
             <List name="Querying" URL="/query" />
-            <List name="Transforming" URL="/transform" />
+            {/* <List name="Transforming" URL="/transform" /> */}
           </ol>
         </div>
       </div>

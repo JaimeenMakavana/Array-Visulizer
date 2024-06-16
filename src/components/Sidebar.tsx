@@ -20,9 +20,9 @@ const Sidebar = () => {
     <div className="hidden md:block w-[100px] bg-gray-100">
       <ol className=" text-[12px]">
         <List name="Inserting" URL="/" />
-        <List name="Deleting" URL="/delete" />
+        {/* <List name="Deleting" URL="/delete" /> */}
         <List name="Querying" URL="/query" />
-        <List name="Transforming" URL="/transform" />
+        {/* <List name="Transforming" URL="/transform" /> */}
       </ol>
     </div>
   );

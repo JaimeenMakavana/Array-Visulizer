@@ -3,9 +3,12 @@ import Button from "@/UI/Button";
 import FillComponent from "@/components/Home/FillComponent";
 import First from "@/components/Home/First";
 import WithComponent from "@/components/Home/WithCompo";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const App = () => {
+  const router = useRouter();
+
   const [Arr, setArr] = useState([{ id: 1, value: 1 }]);
   const [selectedMethod, setselectedMethod] = useState("first");
 
@@ -153,6 +156,10 @@ const App = () => {
         <Button name="Concat" handleClick={handleConcat} />
         <Button name="Fill" handleClick={handleFill} />
         <Button name="With" handleClick={handleWith} />
+        <Button
+          name="Other Method(Querying...)"
+          handleClick={() => router.push("/query")}
+        />
       </div>
       {selectedMethod === "first" && <First Arr={Arr} />}
       {selectedMethod === "fill" && (
