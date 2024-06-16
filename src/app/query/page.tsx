@@ -4,6 +4,7 @@ import FilterComponent from "@/components/Querying/FilterCompo";
 import FindComponent from "@/components/Querying/FindComponent";
 import FlatComponent from "@/components/Querying/FlatComponent";
 import IncludeComponent from "@/components/Querying/IncludeCompo";
+import IndexOfComponent from "@/components/Querying/IndexOfComponent";
 import React, { useState } from "react";
 
 const Page = () => {
@@ -57,6 +58,8 @@ const Page = () => {
     { label: 10, isInclude: false },
   ]);
   const [includeInput, setIncludeInput] = useState("");
+
+  const [IndexArr, setIndexArr] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 
   // ---handle filter------//
   const handleFilter = () => {
@@ -128,6 +131,11 @@ const Page = () => {
     }
   };
 
+  //  --- handleIndex --- //
+  const handleIndexOf = () => {
+    setQueryMethod("indexOf");
+  };
+
   return (
     <div className="h-full overflow-y-auto">
       <div className=" flex flex-wrap py-2 gap-1 justify-center px-5">
@@ -135,6 +143,7 @@ const Page = () => {
         <Button name="Find/FindIndex" handleClick={handleFind} />
         <Button name="Flat" handleClick={handleFlat} />
         <Button name="Includes" handleClick={handleInclude} />
+        <Button name="IndexOf" handleClick={handleIndexOf} />
       </div>
 
       {/* --methods-- */}
@@ -150,6 +159,8 @@ const Page = () => {
       {QueryMethod === "include" && (
         <IncludeComponent handleChange={setIncludeInput} Arr={includeArray} />
       )}
+
+      {QueryMethod === "indexOf" && <IndexOfComponent Arr={IndexArr} />}
     </div>
   );
 };
