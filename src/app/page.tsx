@@ -156,10 +156,7 @@ const App = () => {
         <Button name="Concat" handleClick={handleConcat} />
         <Button name="Fill" handleClick={handleFill} />
         <Button name="With" handleClick={handleWith} />
-        <Button
-          name="Other Method(Querying...)"
-          handleClick={() => router.push("/query")}
-        />
+        <Button name="Others" handleClick={() => router.push("/query")} />
       </div>
       {selectedMethod === "first" && <First Arr={Arr} />}
       {selectedMethod === "fill" && (
