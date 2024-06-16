@@ -100,11 +100,6 @@ const Page = () => {
   const [SpliceArr, setSpliceArr] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
   const [SpliceInput, setSpliceInput] = useState("");
 
-  console.log(
-    ' SpliceInput.split(",")::: ',
-    SpliceInput.split(",")[2].slice(1, -1).split(",")
-  );
-
   // ---handle filter------//
   const handleFilter = () => {
     setQueryMethod("filter");
