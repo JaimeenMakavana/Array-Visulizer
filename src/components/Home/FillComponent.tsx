@@ -16,7 +16,7 @@ const FillComponent = ({
       <div className="flex flex-wrap justify-center">
         {Arr.length > 0 &&
           Arr?.map((ele: any, index: number) => (
-            <div key={ele.label} className="flex flex-col">
+            <div key={ele.label} className="flex flex-col relative">
               <div
                 className={`size-[60px] border text-center ${
                   ele.isFill && "bg-black text-white"
@@ -26,9 +26,7 @@ const FillComponent = ({
               </div>
               <div className="text-center text-xs relative">
                 {index === 0 && (
-                  <p className="absolute bottom-0 -left-8 text-xs -top-[1px]">
-                    index
-                  </p>
+                  <p className="bottom-0 -left-8 text-xs -top-[1px]">index</p>
                 )}
               </div>
             </div>
