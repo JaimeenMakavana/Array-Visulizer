@@ -17,7 +17,7 @@ const List = ({ name, URL }: { name: string; URL: string }) => {
 
 const Sidebar = () => {
   return (
-    <div className="w-[100px] bg-gray-100">
+    <div className="hidden md:block w-[100px] bg-gray-100">
       <ol className=" text-[12px]">
         <List name="Inserting" URL="/" />
         <List name="Deleting" URL="/delete" />

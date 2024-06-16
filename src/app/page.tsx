@@ -145,7 +145,7 @@ const App = () => {
 
   return (
     <div className="h-full overflow-y-auto">
-      <div className=" flex flex-wrap py-2 gap-1 justify-center">
+      <div className=" flex flex-wrap py-2 gap-1 justify-center px-5">
         <Button name="Push" handleClick={handlePush} />
         <Button name="Unshift" handleClick={handleUnshift} />
         <Button name="Pop" handleClick={handlePop} />

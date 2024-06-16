@@ -3,7 +3,7 @@ import React from "react";
 const First = ({ Arr }: { Arr: any }) => {
   return (
     <>
-      <div className="flex flex-wrap justify-center">
+      <div className="flex flex-wrap justify-center px-5">
         {Arr.length > 0 &&
           Arr?.map((ele: any, index: number) => (
             <div key={ele.id} className="flex flex-col">
@@ -11,7 +11,7 @@ const First = ({ Arr }: { Arr: any }) => {
               <div className="text-center text-xs relative">
                 {index === 0 && (
                   <p className="absolute bottom-0 -left-8 text-xs -top-[1px]">
-                    index
+                    i
                   </p>
                 )}
               </div>
