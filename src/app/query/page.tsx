@@ -3,6 +3,7 @@ import Button from "@/UI/Button";
 import FilterComponent from "@/components/Querying/FilterCompo";
 import FindComponent from "@/components/Querying/FindComponent";
 import FlatComponent from "@/components/Querying/FlatComponent";
+import IncludeComponent from "@/components/Querying/IncludeCompo";
 import React, { useState } from "react";
 
 const Page = () => {
@@ -43,6 +44,20 @@ const Page = () => {
     [5, 6, 7, [8, 9, 10]],
   ]);
 
+  const [includeArray, setIncludeArray] = useState([
+    { label: 1, isInclude: false },
+    { label: 2, isInclude: false },
+    { label: 3, isInclude: false },
+    { label: 4, isInclude: false },
+    { label: 5, isInclude: false },
+    { label: 6, isInclude: false },
+    { label: 7, isInclude: false },
+    { label: 8, isInclude: false },
+    { label: 9, isInclude: false },
+    { label: 10, isInclude: false },
+  ]);
+  const [includeInput, setIncludeInput] = useState("");
+
   // ---handle filter------//
   const handleFilter = () => {
     setQueryMethod("filter");
@@ -81,7 +96,6 @@ const Page = () => {
   };
 
   // --- handle flat --- //
-  console.log("flatArray.length::: ", flatArray.length);
   const handleFlat = () => {
     if (QueryMethod === "flat" && flatArray.length !== 10) {
       const newArr = flatArray.flat(Infinity);
@@ -93,12 +107,34 @@ const Page = () => {
     }
   };
 
+  //  --- handle include --- //
+  const handleInclude = () => {
+    setQueryMethod("include");
+
+    if (includeInput) {
+      const inputValue = Number(includeInput);
+      let found = false;
+
+      const newArr = includeArray.map((ele) => {
+        if (!found && ele.label >= inputValue) {
+          found = true;
+          return { ...ele, isInclude: true };
+        } else {
+          return { ...ele, isInclude: false };
+        }
+      });
+
+      setIncludeArray(newArr);
+    }
+  };
+
   return (
     <div className="h-full overflow-y-auto">
       <div className=" flex flex-wrap py-2 gap-1 justify-center px-5">
         <Button name="Filter" handleClick={handleFilter} />
         <Button name="Find/FindIndex" handleClick={handleFind} />
         <Button name="Flat" handleClick={handleFlat} />
+        <Button name="Includes" handleClick={handleInclude} />
       </div>
 
       {/* --methods-- */}
@@ -111,6 +147,9 @@ const Page = () => {
       )}
 
       {QueryMethod === "flat" && <FlatComponent Arr={flatArray} />}
+      {QueryMethod === "include" && (
+        <IncludeComponent handleChange={setIncludeInput} Arr={includeArray} />
+      )}
     </div>
   );
 };

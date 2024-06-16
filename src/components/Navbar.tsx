@@ -39,9 +39,9 @@ const Navbar = () => {
       <div
         className={`${
           MobileMenuToggle && "hidden"
-        } fixed inset-0 bg-black/60 md:hidden`}
+        } fixed inset-0 bg-black/60  md:hidden`}
       >
-        <div className={`w-[65%] bg-white h-full`}>
+        <div className={`w-[65%] bg-white relative h-full`}>
           <button
             className=" text-black"
             onClick={() => setMobileMenuToggle(!MobileMenuToggle)}
