@@ -34,13 +34,6 @@ const FlatComponent = ({ Arr }: { Arr: any }) => {
                     ))
                   : ele}
               </div>
-              <div className="text-center text-xs relative">
-                {index === 0 && (
-                  <p className="absolute bottom-0 -left-8 text-xs -top-[1px]">
-                    index
-                  </p>
-                )}
-              </div>
             </div>
           ))}
       </div>

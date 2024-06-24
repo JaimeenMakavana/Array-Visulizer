@@ -8,23 +8,15 @@ const ReduceComponent = ({ Arr }: { Arr: any }) => {
       <p className=" text-xs text-center">
         (ReduceRight works similar to this method)
       </p>
-      <div className="flex flex-wrap justify-center">
+      <div className="flex flex-wrap justify-center mt-5">
         {Arr.length > 0 ? (
           Arr?.map((ele: any, index: number) => (
             <div key={ele} className="flex flex-col">
-              <div className={`size-[60px] border text-center `}>{ele}</div>
-              {/* <div className={`size-[60px] border text-center `}>10</div> */}
-              <div className="text-center text-xs relative">
-                {index === 0 && (
-                  <p className="absolute bottom-0 -left-8 text-xs -top-[1px]">
-                    index
-                  </p>
-                )}
-              </div>
+              <div className={`size-[80px] border text-center `}>{ele}</div>
             </div>
           ))
         ) : (
-          <div className={`size-[60px] border text-center `}>55</div>
+          <div className={`size-[80px] border text-center `}>55</div>
         )}
       </div>
     </div>

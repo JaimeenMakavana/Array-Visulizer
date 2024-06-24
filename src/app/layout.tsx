@@ -1,3 +1,4 @@
+"use client";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -5,13 +6,12 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Navbar from "@/components/Navbar";
 import Sidebar from "@/components/Sidebar";
-
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "Array Visulizer",
-  description: "Created by Jaimeen M.",
-};
+// export const metadata: Metadata = {
+//   title: "Array Visulizer",
+//   description: "Created by Jaimeen M.",
+// };
 
 export default function RootLayout({
   children,

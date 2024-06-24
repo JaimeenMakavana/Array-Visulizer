@@ -11,17 +11,16 @@ const IncludeComponent = ({
   return (
     <div>
       <h1 className="text-center font-semibold">Include Method</h1>
-      <div className="flex justify-center my-5">
-        <label htmlFor="">Is It in?:</label>
-        <Input handleChange={handleChange} />
+      <div className=" flex justify-center items-center flex-col my-5">
+        <p className=" text-sm">Check if provided value is in array?:</p> <br />
+        <Input handleChange={handleChange} placeHolder="choose b/w 1 to 10" />
       </div>
-
       <div className="flex flex-wrap justify-center">
         {Arr.length > 0 &&
           Arr?.map((ele: any, index: number) => (
             <div key={ele.label} className="flex flex-col">
               <div
-                className={`size-[60px] border text-center ${
+                className={`size-[80px] border text-center ${
                   ele.isInclude ? "bg-black text-white" : ""
                 }`}
               >
@@ -30,13 +29,6 @@ const IncludeComponent = ({
                 <span className=" text-xs text-white">
                   ({ele.isInclude && "True"})
                 </span>
-              </div>
-              <div className="text-center text-xs relative">
-                {index === 0 && (
-                  <p className="absolute bottom-0 -left-8 text-xs -top-[1px]">
-                    index
-                  </p>
-                )}
               </div>
             </div>
           ))}

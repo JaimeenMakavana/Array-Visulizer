@@ -13,29 +13,25 @@ const SpliceComponent = ({
       <h1 className="text-center font-semibold">Splice Method</h1>
 
       <div className="flex justify-center my-5">
-        <Input handleChange={handleChange} />
+        <Input handleChange={handleChange} placeHolder="1,2,(3,4,5)" />
       </div>
 
       <p className=" text-xs text-center">
         (
-        <span className=" text-red-600 italic font-semibold">
+        <span className=" text-violet-600 italic font-semibold">
           ie: 1, 2, (1,2,3)
         </span>{" "}
-        , first : from where you want to replace or add element, second: how
-        many element you want to remove, third: what you want to add)
+        , <span className=" text-orange-300">first</span> : from where you want
+        to replace or add element,{" "}
+        <span className=" text-pink-500">Second</span>: how many element you
+        want to remove, <span className=" text-teal-500">Third</span>: what you
+        want to add)
       </p>
-      <div className="flex flex-wrap justify-center">
+      <div className="flex flex-wrap justify-center mt-5">
         {Arr.length > 0 &&
           Arr?.map((ele: any, index: number) => (
             <div key={ele} className="flex flex-col">
-              <div className={`size-[60px] border text-center `}>{ele}</div>
-              <div className="text-center text-xs relative">
-                {index === 0 && (
-                  <p className="absolute bottom-0 -left-8 text-xs -top-[1px]">
-                    index
-                  </p>
-                )}
-              </div>
+              <div className={`size-[80px] border text-center `}>{ele}</div>
             </div>
           ))}
       </div>

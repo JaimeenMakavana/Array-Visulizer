@@ -13,7 +13,7 @@ const SliceComponent = ({
     <div>
       <h1 className="text-center font-semibold">Slice Method</h1>
 
-      <p className=" text-xs text-center">
+      <p className=" text-xs text-center my-3">
         (Select more then 1 element and then click slice button)
       </p>
       <div className="flex flex-wrap justify-center">
@@ -21,19 +21,12 @@ const SliceComponent = ({
           Arr?.map((ele: any, index: number) => (
             <div key={ele} className="flex flex-col">
               <div
-                className={`size-[60px] border text-center ${
+                className={`size-[80px] border text-center ${
                   SelectedSlice.includes(ele) ? "bg-black text-white" : ""
                 }`}
                 onClick={() => setSelectedSlice([...SelectedSlice, ele])}
               >
                 {ele}
-              </div>
-              <div className="text-center text-xs relative">
-                {index === 0 && (
-                  <p className="absolute bottom-0 -left-8 text-xs -top-[1px]">
-                    index
-                  </p>
-                )}
               </div>
             </div>
           ))}

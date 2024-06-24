@@ -148,7 +148,7 @@ const App = () => {
 
   return (
     <div className="h-full overflow-y-auto">
-      <div className=" flex flex-wrap py-2 gap-1 justify-center px-5">
+      <div className=" flex flex-wrap py-2 gap-3 mt-5 justify-center px-5">
         <Button name="Push" handleClick={handlePush} />
         <Button name="Unshift" handleClick={handleUnshift} />
         <Button name="Pop" handleClick={handlePop} />
@@ -156,7 +156,11 @@ const App = () => {
         <Button name="Concat" handleClick={handleConcat} />
         <Button name="Fill" handleClick={handleFill} />
         <Button name="With" handleClick={handleWith} />
-        <Button name="Others" handleClick={() => router.push("/query")} />
+        <Button
+          name="Others"
+          handleClick={() => router.push("/query")}
+          className="bg-orange-300"
+        />
       </div>
       {selectedMethod === "first" && <First Arr={Arr} />}
       {selectedMethod === "fill" && (

@@ -11,10 +11,13 @@ import ReverseComponent from "@/components/Querying/ReverseComponent";
 import SliceComponent from "@/components/Querying/SliceCompo";
 import SpliceComponent from "@/components/Querying/SpliceCompo";
 import SpliceCompo from "@/components/Querying/SpliceCompo";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 const Page = () => {
   const [QueryMethod, setQueryMethod] = useState("filter");
+
+  const router = useRouter();
 
   const [filterArray, setfilterArray] = useState([
     { label: 1, isFilter: false },
@@ -251,18 +254,63 @@ const Page = () => {
 
   return (
     <div className="h-full overflow-y-auto">
-      <div className=" flex flex-wrap py-2 gap-1 justify-center px-5">
-        <Button name="Filter" handleClick={handleFilter} />
-        <Button name="Find/FindIndex" handleClick={handleFind} />
-        <Button name="Flat" handleClick={handleFlat} />
-        <Button name="Includes" handleClick={handleInclude} />
-        <Button name="IndexOf" handleClick={handleIndexOf} />
-        <Button name="Map" handleClick={handleMap} />
-        <Button name="Reduce" handleClick={handleReduce} />
-        <Button name="Reverse" handleClick={handleReverse} />
+      <div className=" flex flex-wrap py-2 gap-3 justify-center px-5 mt-5">
+        <Button
+          name="Filter"
+          handleClick={handleFilter}
+          active={QueryMethod === "filter"}
+        />
+        <Button
+          name="Find/FindIndex"
+          handleClick={handleFind}
+          active={QueryMethod === "find"}
+        />
+        <Button
+          name="Flat"
+          handleClick={handleFlat}
+          active={QueryMethod === "flat"}
+        />
+        <Button
+          name="Includes"
+          handleClick={handleInclude}
+          active={QueryMethod === "include"}
+        />
+        <Button
+          name="IndexOf"
+          handleClick={handleIndexOf}
+          active={QueryMethod === "indexOf"}
+        />
+        <Button
+          name="Map"
+          handleClick={handleMap}
+          active={QueryMethod === "map"}
+        />
+        <Button
+          name="Reduce"
+          handleClick={handleReduce}
+          active={QueryMethod === "reduce"}
+        />
+        <Button
+          name="Reverse"
+          handleClick={handleReverse}
+          active={QueryMethod === "reverse"}
+        />
         {/* <Button name="Some" handleClick={handleReverse} /> */}
-        <Button name="Slice" handleClick={handleSlice} />
-        <Button name="Splice" handleClick={handleSplice} />
+        <Button
+          name="Slice"
+          handleClick={handleSlice}
+          active={QueryMethod === "slice"}
+        />
+        <Button
+          name="Splice"
+          handleClick={handleSplice}
+          active={QueryMethod === "splice"}
+        />
+        <Button
+          name="Back"
+          handleClick={() => router.push("/")}
+          className="bg-orange-300"
+        />
       </div>
 
       {/* --methods-- */}
